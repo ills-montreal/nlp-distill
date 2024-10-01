@@ -1,0 +1,32 @@
+{
+  "dataset_revision": "d3fb88f8f02e40887cd149695127462bbcf29b4a",
+  "evaluation_time": 0.24042129516601562,
+  "kg_co2_emissions": null,
+  "mteb_version": "1.12.83",
+  "scores": {
+    "test": [
+      {
+        "cosine_pearson": 0.8517585348573107,
+        "cosine_spearman": 0.8152776127980517,
+        "euclidean_pearson": 0.8371309756310151,
+        "euclidean_spearman": 0.8185728686055822,
+        "hf_subset": "default",
+        "languages": [
+          "eng-Latn"
+        ],
+        "main_score": 0.8152776127980517,
+        "manhattan_pearson": 0.8360126151271784,
+        "manhattan_spearman": 0.8223199419369972,
+        "pearson": [
+          0.8517585416884453,
+          2.9001605277565794e-29
+        ],
+        "spearman": [
+          0.8152776127980517,
+          5.488019500983772e-25
+        ]
+      }
+    ]
+  },
+  "task_name": "BIOSSES"
+}

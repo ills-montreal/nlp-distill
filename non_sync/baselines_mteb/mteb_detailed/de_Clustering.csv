@@ -1,0 +1,19 @@
+Rank,Model,Model Size (Million Parameters),"Memory Usage (GB, fp32)",Average,BlurbsClusteringP2P,BlurbsClusteringS2S,TenKGnadClusteringP2P,TenKGnadClusteringS2S,Subset,Task category
+1,"<a target=""_blank"" style=""text-decoration: underline"" href=""https://huggingface.co/deepset/gbert-large"">gbert-large</a>",337.0,1.26,32.34,39.3,13.38,41.69,34.97,de,Clustering
+2,"<a target=""_blank"" style=""text-decoration: underline"" href=""https://huggingface.co/sentence-transformers/sentence-t5-xxl"">sentence-t5-xxl</a>",4865.0,18.12,29.74,39.91,15.94,43.43,19.69,de,Clustering
+3,"<a target=""_blank"" style=""text-decoration: underline"" href=""https://huggingface.co/jinaai/jina-embeddings-v2-base-de"">jina-embeddings-v2-base-de</a>",161.0,0.6,29.55,35.49,16.17,42.84,23.69,de,Clustering
+4,"<a target=""_blank"" style=""text-decoration: underline"" href=""https://huggingface.co/sentence-transformers/sentence-t5-large"">sentence-t5-large</a>",168.0,0.63,27.49,35.33,13.27,44.11,17.26,de,Clustering
+5,"<a target=""_blank"" style=""text-decoration: underline"" href=""https://huggingface.co/sentence-transformers/paraphrase-multilingual-mpnet-base-v2"">paraphrase-multilingual-mpnet-base-v2</a>",278.0,1.04,27.04,34.38,15.81,35.96,22.0,de,Clustering
+6,"<a target=""_blank"" style=""text-decoration: underline"" href=""https://huggingface.co/deepset/gbert-base"">gbert-base</a>",110.0,0.41,27.0,35.36,11.27,37.16,24.23,de,Clustering
+7,"<a target=""_blank"" style=""text-decoration: underline"" href=""https://huggingface.co/sentence-transformers/use-cmlm-multilingual"">use-cmlm-multilingual</a>",472.0,1.76,26.9,29.63,15.24,37.1,25.64,de,Clustering
+8,"<a target=""_blank"" style=""text-decoration: underline"" href=""https://huggingface.co/sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"">paraphrase-multilingual-MiniLM-L12-v2</a>",118.0,0.44,26.3,32.46,14.33,36.13,22.26,de,Clustering
+9,"<a target=""_blank"" style=""text-decoration: underline"" href=""https://huggingface.co/sentence-transformers/sentence-t5-base"">sentence-t5-base</a>",110.0,0.41,26.29,30.59,11.57,44.88,18.11,de,Clustering
+10,"<a target=""_blank"" style=""text-decoration: underline"" href=""https://huggingface.co/facebook/SONAR"">SONAR</a>",,,22.71,27.0,14.85,21.83,27.16,de,Clustering
+11,"<a target=""_blank"" style=""text-decoration: underline"" href=""https://huggingface.co/uklfr/gottbert-base"">gottbert-base</a>",127.0,0.47,21.46,34.49,8.37,33.66,9.34,de,Clustering
+12,"<a target=""_blank"" style=""text-decoration: underline"" href=""https://huggingface.co/T-Systems-onsite/cross-en-de-roberta-sentence-transformer"">cross-en-de-roberta-sentence-transformer</a>",278.0,1.04,19.49,30.82,12.69,23.5,10.94,de,Clustering
+13,"<a target=""_blank"" style=""text-decoration: underline"" href=""https://huggingface.co/xlm-roberta-large"">xlm-roberta-large</a>",560.0,2.09,18.94,29.84,7.29,32.46,6.16,de,Clustering
+14,"<a target=""_blank"" style=""text-decoration: underline"" href=""https://huggingface.co/ClayAtlas/winberta-base"">winberta-base</a>",,,16.62,17.47,7.96,29.79,11.27,de,Clustering
+15,"<a target=""_blank"" style=""text-decoration: underline"" href=""https://huggingface.co/sentence-transformers/average_word_embeddings_komninos"">komninos</a>",134.0,0.5,10.03,11.37,8.01,15.89,4.84,de,Clustering
+16,"<a target=""_blank"" style=""text-decoration: underline"" href=""https://huggingface.co/deepset/gelectra-large"">gelectra-large</a>",335.0,1.25,9.23,13.96,7.57,11.49,3.91,de,Clustering
+17,"<a target=""_blank"" style=""text-decoration: underline"" href=""https://huggingface.co/deepset/gelectra-base"">gelectra-base</a>",110.0,0.41,7.73,10.06,7.74,9.02,4.11,de,Clustering
+18,"<a target=""_blank"" style=""text-decoration: underline"" href=""https://huggingface.co/Muennighoff/SGPT-125M-weightedmean-nli-bitfit"">SGPT-125M-weightedmean-nli-bitfit</a>",138.0,0.51,,,8.0,,,de,Clustering

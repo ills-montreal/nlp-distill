@@ -1,0 +1,73 @@
+{
+  "dataset_revision": "4f58c6b202a23cf9a4da393831edf4f9183cad37",
+  "evaluation_time": 9.272166013717651,
+  "kg_co2_emissions": null,
+  "mteb_version": "1.12.83",
+  "scores": {
+    "test": [
+      {
+        "accuracy": 0.59155,
+        "f1": 0.547048341823304,
+        "f1_weighted": 0.6082584010882603,
+        "hf_subset": "default",
+        "languages": [
+          "eng-Latn"
+        ],
+        "main_score": 0.59155,
+        "scores_per_experiment": [
+          {
+            "accuracy": 0.606,
+            "f1": 0.5570166606984471,
+            "f1_weighted": 0.624858195429982
+          },
+          {
+            "accuracy": 0.5925,
+            "f1": 0.545112408184066,
+            "f1_weighted": 0.602709726101737
+          },
+          {
+            "accuracy": 0.5985,
+            "f1": 0.5442303489436843,
+            "f1_weighted": 0.6173052407051917
+          },
+          {
+            "accuracy": 0.5725,
+            "f1": 0.5343995772382938,
+            "f1_weighted": 0.5947460926165732
+          },
+          {
+            "accuracy": 0.595,
+            "f1": 0.5480139758944879,
+            "f1_weighted": 0.6122194626727508
+          },
+          {
+            "accuracy": 0.583,
+            "f1": 0.5363404019735897,
+            "f1_weighted": 0.6008572071410403
+          },
+          {
+            "accuracy": 0.605,
+            "f1": 0.5544030662248499,
+            "f1_weighted": 0.6199116155982358
+          },
+          {
+            "accuracy": 0.582,
+            "f1": 0.5434060921976357,
+            "f1_weighted": 0.5944710581113161
+          },
+          {
+            "accuracy": 0.6095,
+            "f1": 0.5608296603780366,
+            "f1_weighted": 0.623361198092501
+          },
+          {
+            "accuracy": 0.5715,
+            "f1": 0.5467312264999489,
+            "f1_weighted": 0.5921442144132765
+          }
+        ]
+      }
+    ]
+  },
+  "task_name": "EmotionClassification"
+}

@@ -1,0 +1,22 @@
+Rank,Model,Model Size (Million Parameters),"Memory Usage (GB, fp32)",BornholmBitextMining,Subset,Task category
+1,"<a target=""_blank"" style=""text-decoration: underline"" href=""https://huggingface.co/facebook/SONAR"">SONAR</a>",,,47.37,da,BitextMining
+2,"<a target=""_blank"" style=""text-decoration: underline"" href=""https://huggingface.co/intfloat/multilingual-e5-base"">multilingual-e5-base</a>",278.0,1.04,46.4,da,BitextMining
+3,"<a target=""_blank"" style=""text-decoration: underline"" href=""https://huggingface.co/intfloat/multilingual-e5-large"">multilingual-e5-large</a>",560.0,2.09,44.16,da,BitextMining
+4,"<a target=""_blank"" style=""text-decoration: underline"" href=""https://huggingface.co/intfloat/multilingual-e5-small"">multilingual-e5-small</a>",118.0,0.44,43.89,da,BitextMining
+5,"<a target=""_blank"" style=""text-decoration: underline"" href=""https://huggingface.co/intfloat/e5-small"">e5-small</a>",33.0,0.12,40.27,da,BitextMining
+6,"<a target=""_blank"" style=""text-decoration: underline"" href=""https://huggingface.co/intfloat/e5-large"">e5-large</a>",335.0,1.25,40.15,da,BitextMining
+7,"<a target=""_blank"" style=""text-decoration: underline"" href=""https://huggingface.co/intfloat/e5-base"">e5-base</a>",110.0,0.41,40.09,da,BitextMining
+8,"<a target=""_blank"" style=""text-decoration: underline"" href=""https://huggingface.co/Jechto/e5-dansk-test-0.1"">e5-dansk-test-0.1</a>",560.0,2.09,37.97,da,BitextMining
+9,"<a target=""_blank"" style=""text-decoration: underline"" href=""https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2"">all-MiniLM-L6-v2</a>",23.0,0.09,29.68,da,BitextMining
+10,"<a target=""_blank"" style=""text-decoration: underline"" href=""https://huggingface.co/chcaa/dfm-encoder-large-v1"">dfm-sentence-encoder-large-1</a>",355.0,1.32,15.93,da,BitextMining
+11,"<a target=""_blank"" style=""text-decoration: underline"" href=""https://huggingface.co/KBLab/sentence-bert-swedish-cased"">sentence-bert-swedish-cased</a>",125.0,0.47,14.08,da,BitextMining
+12,"<a target=""_blank"" style=""text-decoration: underline"" href=""https://huggingface.co/chcaa/dfm-encoder-large-v1"">dfm-encoder-large-v1</a>",355.0,1.32,11.65,da,BitextMining
+13,"<a target=""_blank"" style=""text-decoration: underline"" href=""https://huggingface.co/NbAiLab/nb-bert-base"">nb-bert-base</a>",179.0,0.67,9.88,da,BitextMining
+14,"<a target=""_blank"" style=""text-decoration: underline"" href=""https://huggingface.co/KB/bert-base-swedish-cased"">bert-base-swedish-cased</a>",125.0,0.47,6.6,da,BitextMining
+15,"<a target=""_blank"" style=""text-decoration: underline"" href=""https://huggingface.co/vesteinn/DanskBERT"">DanskBERT</a>",125.0,0.47,6.34,da,BitextMining
+16,"<a target=""_blank"" style=""text-decoration: underline"" href=""https://huggingface.co/ltg/norbert3-base"">norbert3-base</a>",131.0,0.49,6.08,da,BitextMining
+17,"<a target=""_blank"" style=""text-decoration: underline"" href=""https://huggingface.co/NbAiLab/nb-bert-large"">nb-bert-large</a>",355.0,1.32,4.53,da,BitextMining
+18,"<a target=""_blank"" style=""text-decoration: underline"" href=""https://huggingface.co/xlm-roberta-base"">xlm-roberta-base</a>",279.0,1.04,4.42,da,BitextMining
+19,"<a target=""_blank"" style=""text-decoration: underline"" href=""https://huggingface.co/ltg/norbert3-large"">norbert3-large</a>",368.0,1.37,2.9,da,BitextMining
+20,"<a target=""_blank"" style=""text-decoration: underline"" href=""https://huggingface.co/jonfd/electra-small-nordic"">electra-small-nordic</a>",23.0,0.09,1.44,da,BitextMining
+21,"<a target=""_blank"" style=""text-decoration: underline"" href=""https://huggingface.co/KBLab/electra-small-swedish-cased-discriminator"">electra-small-swedish-cased-discriminator</a>",16.0,0.06,0.85,da,BitextMining

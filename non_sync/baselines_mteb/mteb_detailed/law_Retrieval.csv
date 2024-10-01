@@ -1,0 +1,7 @@
+Rank,Model,Model Size (Million Parameters),"Memory Usage (GB, fp32)",Average,AILACasedocs,AILAStatutes,GerDaLIRSmall,LeCaRDv2,LegalBenchConsumerContractsQA,LegalBenchCorporateLobbying,LegalQuAD,LegalSummarization,Subset,Task category
+1,"<a target=""_blank"" style=""text-decoration: underline"" href=""https://docs.voyageai.com/embeddings/"">voyage-law-2</a>",,,65.39,44.56,45.51,44.91,72.75,83.27,95.66,67.47,68.96,law,Retrieval
+2,"<a target=""_blank"" style=""text-decoration: underline"" href=""https://huggingface.co/intfloat/e5-mistral-7b-instruct"">e5-mistral-7b-instruct</a>",7111,26.49,59.77,38.76,38.07,37.18,68.56,75.46,94.01,59.64,66.51,law,Retrieval
+3,"<a target=""_blank"" style=""text-decoration: underline"" href=""https://openai.com/blog/new-embedding-models-and-api-updates"">text-embedding-3-large</a>",,,59.22,39.0,41.31,32.77,57.2,79.39,95.09,57.47,71.55,law,Retrieval
+4,"<a target=""_blank"" style=""text-decoration: underline"" href=""https://docs.mistral.ai/guides/embeddings"">mistral-embed</a>",,,56.43,38.2,44.81,17.85,61.12,80.8,94.11,47.17,67.39,law,Retrieval
+5,"<a target=""_blank"" style=""text-decoration: underline"" href=""https://huggingface.co/Cohere/Cohere-embed-english-v3.0"">Cohere-embed-english-v3.0</a>",,,43.04,31.54,27.15,6.05,21.02,77.12,93.68,26.08,61.7,law,Retrieval
+6,"<a target=""_blank"" style=""text-decoration: underline"" href=""https://huggingface.co/BAAI/bge-large-en-v1.5"">bge-large-en-v1.5</a>",,,39.22,25.15,20.74,3.96,22.68,73.52,91.51,16.22,59.99,law,Retrieval

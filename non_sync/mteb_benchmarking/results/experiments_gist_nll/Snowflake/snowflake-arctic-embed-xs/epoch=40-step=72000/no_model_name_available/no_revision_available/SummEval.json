@@ -1,0 +1,24 @@
+{
+  "dataset_revision": "cda12ad7615edc362dbf25a00fdd61d3b1eaf93c",
+  "evaluation_time": 2.8029911518096924,
+  "kg_co2_emissions": null,
+  "mteb_version": "1.12.83",
+  "scores": {
+    "test": [
+      {
+        "cosine_pearson": 0.31083140459281017,
+        "cosine_spearman": 0.3001104775427917,
+        "dot_pearson": 0.31387207504016346,
+        "dot_spearman": 0.3072228714991018,
+        "hf_subset": "default",
+        "languages": [
+          "eng-Latn"
+        ],
+        "main_score": 0.3001104775427917,
+        "pearson": 0.3108314099491012,
+        "spearman": 0.30012866392790394
+      }
+    ]
+  },
+  "task_name": "SummEval"
+}
