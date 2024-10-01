@@ -24,9 +24,6 @@ python scripts/train_snowflakes.py --lr 0.00005 --batch_size 256 \
 The repository is organized as follows:
 ```
 .
-├── convert_checkpoint.sh # Used to make hf checkpoints and run the mteb eval
-├── evaluate_checkpoints.sh # Same
-├── fix_checkpoints_naming.sh
 ├── jupyters # All the figures in the paper. Fix Export variables to use
 │   ├── fig_classification_against_single.ipynb
 │   ├── fig_classification_full_tables.ipynb
@@ -51,13 +48,6 @@ The repository is organized as follows:
 │   └── mteb_benchmarking
 ├── pyproject.toml
 ├── Readme.md
-├── run_dataloader_check.sh
-├── run_gpt_training_mi_bis.sh
-├── run_gpt_training_mse.sh
-├── run_gpt_training.sh
-├── run_mteb_distributed.sh
-├── run_snowflake_training.sh
-├── run_snowflake_training_single_teacher.sh
 ├── scripts
 │   ├── cache_models.py # to cache models on nodes without internet
 │   ├── cache_mteb_ds.py
@@ -71,9 +61,6 @@ The repository is organized as follows:
 │   ├── train_embedder_from_scratch.py # initial training script
 │   ├── train_snowflakes.py # better version for training snowflakes
 │   └── utils # utils for training and visualization, pytorchlightning models
-├── slurms
-│   └── generate_embeddings.sh
-├── submit_eval.sh # automated eval
 └── training_dataset # scripts to create the hf dataset
 ├── gist_dataset_export_hf.py
 └── load_merge_and_export_hf_dataset.py
