@@ -12,10 +12,10 @@ python scripts/train_snowflakes.py --lr 0.00005 --batch_size 256 \
       --gradient_accumulation_step 8 \
       --experiment_name textdistill-snowflake-nll-gist \
       --model_name Snowflake/snowflake-arctic-embed-xs \
-      --teachers /lustre/fsn1/projects/rech/ehz/uwf24rf/EMIR/nlp_embeddings/embeddings_gist/jamesgpt1/sf_model_e5  
-           /lustre/fsn1/projects/rech/ehz/uwf24rf/EMIR/nlp_embeddings/embeddings_gist/WhereIsAI/UAE-Large-V1          
-           /lustre/fsn1/projects/rech/ehz/uwf24rf/EMIR/nlp_embeddings/embeddings_gist/Salesforce/SFR-Embedding-2_R 
-           /lustre/fsn1/projects/rech/ehz/uwf24rf/EMIR/nlp_embeddings/embeddings_gist/dunzhang/stella_en_400M_v5
+      --teachers nlp_embeddings/embeddings_gist/jamesgpt1/sf_model_e5  
+           nlp_embeddings/embeddings_gist/WhereIsAI/UAE-Large-V1          
+           nlp_embeddings/embeddings_gist/Salesforce/SFR-Embedding-2_R 
+           nlp_embeddings/embeddings_gist/dunzhang/stella_en_400M_v5
 ```
 
 
