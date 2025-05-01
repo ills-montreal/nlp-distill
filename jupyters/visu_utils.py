@@ -113,6 +113,115 @@ def highlight_top_3(s, props=""):
     return [props if v else "" for v in is_max]
 
 
+def make_results_tables_per_group_size_all_merged(
+    df, metric, low, high, EXPORT_PATH_TABLE, name, caption
+):
+    df_pivot = df.pivot_table(
+        index=["group", "loss", "Model", "Model Size (Million Parameters)", "Dataset"],
+        columns="Task",
+        values=metric,
+    ).reset_index()
+
+    # replace " " by \\
+
+    df_pivot = df_pivot.reset_index().rename(
+        {
+            "group": "    ",
+            "loss": " ",
+            "Model Size (Million Parameters)": "Params. (M)",
+            "Dataset": "  ",
+        },
+        axis=1,
+    )
+    df_pivot = df_pivot.drop(columns=["  "])
+    # drop any columns with index
+    df_pivot = df_pivot.drop(
+        columns=[c for c in df_pivot.columns if c.startswith("level") or c == "index"]
+    )
+    df_pivot = df_pivot.dropna()
+
+    df_pivot["Model"] = df_pivot["Model"].apply(lambda x: x.split("/")[-1])
+
+    latex_results = df_pivot.set_index(["    ", " ", "Model"])
+
+    params = latex_results["Params. (M)"]
+    latex_results = latex_results.drop(columns=["Params. (M)"])
+
+    avg_columns = latex_results.mean(axis=1)
+
+    latex_results["Avg."] = avg_columns
+
+    columns = latex_results.columns
+    latex_results["Size"] = params
+    df_pivot = latex_results[["Size"] + list(columns)]
+
+    df_pivot = df_pivot.drop_duplicates()
+    df_pivot = df_pivot[~df_pivot.index.duplicated(keep="first")]
+
+    idx = pd.IndexSlice
+    df_pivot = df_pivot.loc[idx[["xs", "s", "m"], ["MTEB", "MSE", "NLL"]], :]
+    # sort by index
+    # df_pivot = df_pivot.sort_index(level=0, sort_remaining=False)
+
+    latex_results = df_pivot.style.format("{:.1f}")
+    # format params as int
+    latex_results = latex_results.format("{:.0f}M", subset=["Size"])
+    latex_results = latex_results.format_index(escape="latex")
+
+    display(latex_results)
+
+    # highlight max
+    # latex_results = latex_results.highlight_max(axis=0, props="bfseries:")
+
+    # apply to all but the first column
+    for s in ["xs", "s", "m"]:
+        latex_results = latex_results.apply(
+            lambda x: highlight_top_1(x, "bfseries:"),
+            axis=0,
+            subset=(s, latex_results.columns[1:]),
+        )
+        # underline top 2
+        latex_results = latex_results.apply(
+            lambda x: highlight_top_2(x, "underline:--rwrap"),
+            axis=0,
+            subset=(s, latex_results.columns[1:]),
+        )
+
+    latex = latex_results.to_latex(
+        clines="skip-last;data",
+        hrules=True,
+        sparse_index=True,
+        multicol_align="c",
+        multirow_align="c",
+        caption=caption,
+        label=f"tab:{name}",
+        column_format="lllc|" + "c" * (len(df_pivot.columns) - 2) + "|c",
+    )
+
+    # add resizebox
+    latex = latex.replace(
+        r"\begin{tabular}", r"\resizebox{\textwidth}{!}{\begin{tabular}"
+    )
+    latex = latex.replace(r"\end{tabular}", r"\end{tabular}}")
+
+    # replace cline{..} by cmidrule
+    import re
+
+    pattern = re.compile(r"\\cline{(\d+)-(\d+)}")
+    latex = pattern.sub(r"\\cmidrule(lr){\1-\2}", latex)
+
+    # look for \cmidrule(lr){1-*} and make a double line
+    pattern = re.compile(r"\\cmidrule\(lr\){1-(\d+)}")
+    # \morecmidrules\cmidrule
+
+    latex = pattern.sub(
+        r"\\cmidrule(lr){1-\1} \\morecmmidrules \\cmidrule(lr){1-\1}", latex
+    )
+
+    with open(EXPORT_PATH_TABLE / f"{name}.tex", "w") as f:
+        f.write(latex)
+
+
 def make_results_tables_per_group_size(
     df, metric, low, high, EXPORT_PATH_TABLE, name, caption
 ):
@@ -196,6 +305,10 @@ def make_results_tables_per_group_size(
         r"\begin{tabular}", r"\resizebox{\textwidth}{!}{\begin{tabular}"
     )
     latex = latex.replace(r"\end{tabular}", r"\end{tabular}}")
+
+    print(latex)
+    # replace clines by cmidrule
+    latex = latex.replace(r"\cline{2-3}", r"\cmidrule(lr){2-3}")
 
     with open(EXPORT_PATH_TABLE / f"{name}.tex", "w") as f:
         f.write(latex)
