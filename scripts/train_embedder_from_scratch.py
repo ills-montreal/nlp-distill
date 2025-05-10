@@ -8,8 +8,12 @@ import lightning as pl
 import torch
 import torch.nn as nn
 from lightning.pytorch.callbacks import ModelCheckpoint
-from lightning.pytorch.loggers import WandbLogger
+from lightning.pytorch.loggers import TensorBoardLogger
 from lightning.pytorch.plugins.environments import LightningEnvironment
+
+import torch.distributed as dist
+
+from lightning.pytorch.strategies import FSDPStrategy
 from torch.utils.data import DataLoader
 from transformers import AutoTokenizer, AutoModel
 
@@ -27,9 +31,6 @@ from utils.pl_model import (
 torch.multiprocessing.set_sharing_strategy("file_system")
 
 logging.basicConfig(level=logging.INFO)
-
-# os make WANDB_MODE offline
-os.environ["WANDB_MODE"] = "offline"
 
 
 def parse_arguments():
@@ -182,8 +183,8 @@ def main():
     # plModel = torch.compile(plModel)
 
     # wandb_logger = WandbLogger(log_model=False, project="textdistill-5", id="ptg6gk4k")
-    wandb_logger = WandbLogger(
-        log_model=False, project=args.experiment_name, id=args.experiment_id
+    wandb_logger = TensorBoardLogger(
+        save_dir="tb_logs", name=f"{args.experiment_name}_"
     )
 
     # wandb_logger.experiment.id = "ptg6gk4k"
@@ -206,17 +207,18 @@ def main():
         val_check_interval=1000,
         check_val_every_n_epoch=None,
         accelerator="cuda",
-        devices=1,
+        devices=4,
         accumulate_grad_batches=args.gradient_accumulation_steps,
         log_every_n_steps=1,
         enable_progress_bar=True,
+        use_distributed_sampler=False,
         logger=wandb_logger,
         plugins=[LightningEnvironment()],
         precision="bf16-mixed",
         callbacks=[checkpoint_callback],
         enable_checkpointing=True,
         # strategy=DDPStrategy(find_unused_parameters=False),
-        # strategy=DeepSpeedStrategy(),
+        strategy=FSDPStrategy(),
         # strategy="ddp",
         fast_dev_run=16 if args.test else False,
     )
@@ -228,6 +230,7 @@ def main():
         val_dataloaders=eval_data_loader,
         ckpt_path="last",
     )
+    trainer.print(torch.cuda.memory_summary())
 
 
 if __name__ == "__main__":

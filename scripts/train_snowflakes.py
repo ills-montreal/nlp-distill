@@ -19,11 +19,14 @@ from utils.data_multifiles2 import (
     make_aligned_collate_fn,
     ExtractedSubSet,
 )
+import torch.distributed as dist
 from utils.pl_model_snowflakes import (
     DistilledEmbedderPLModelAlignedInputs,
     DistilledEmbedderPLmodelAlignedInputsMSE,
     DistilledEmbedderPLmodelAlignedInputsCosineSimilarity,
 )
+
+from lightning.pytorch.strategies import FSDPStrategy
 
 torch.multiprocessing.set_sharing_strategy("file_system")
 
@@ -36,7 +39,7 @@ os.environ["WANDB_MODE"] = "offline"
 def parse_arguments():
     parser = argparse.ArgumentParser()
 
-    parser.add_argument("--model_name", type=str, default="bert-base-uncased")
+    parser.add_argument("--model_name", type=str)
 
     # teachers names
     parser.add_argument(
@@ -152,15 +155,18 @@ def main():
             worker_infos.num_workers,
             worker_infos.dataset,
         )
-        dataset.roll(worker_id=worker_id, n_workers=n_workers)
+        rank, world_size = dist.get_rank(), dist.get_world_size()
+        dataset.roll(
+            worker_id=worker_id + n_workers * rank, n_workers=n_workers * world_size
+        )
 
     dataloader = DataLoader(
         dataset,
         batch_size=args.batch_size,
         collate_fn=collate_fn,
-        num_workers=4,
+        num_workers=7,
         timeout=10000,
-        prefetch_factor=256,
+        prefetch_factor=64,
         worker_init_fn=worker_init_fn,
     )
 
@@ -168,9 +174,9 @@ def main():
         eval_set,
         batch_size=args.batch_size,
         collate_fn=collate_fn,
-        num_workers=4,
+        num_workers=1,
         timeout=10000,
-        prefetch_factor=256,
+        prefetch_factor=64,
     )
 
     if args.MSE:
@@ -210,7 +216,6 @@ def main():
         log_model=False,
         project=args.experiment_name,
         name=sanitize_model_name(args.model_name),
-        id=args.experiment_name + "_" + sanitize_model_name(args.model_name),
         resume="allow",
     )
 
@@ -236,20 +241,21 @@ def main():
         val_check_interval=1000,
         check_val_every_n_epoch=None,
         accelerator="cuda",
-        devices=1,
+        devices=4,
         accumulate_grad_batches=args.gradient_accumulation_steps,
         log_every_n_steps=1,
         enable_progress_bar=True,
+        use_distributed_sampler=False,
         logger=wandb_logger,
         plugins=[LightningEnvironment()],
         precision="bf16-mixed",
         callbacks=[checkpoint_callback],  # , stochastic_weight_averaging],
         enable_checkpointing=True,
         # strategy=DDPStrategy(find_unused_parameters=False),
-        # strategy=DeepSpeedStrategy(),
+        strategy=FSDPStrategy(),
         # strategy="ddp",
         fast_dev_run=16 if args.test else False,
-        gradient_clip_val=0.5,
+        # gradient_clip_val=0.5,
     )
 
     logging.log(logging.INFO, f"Start training")
